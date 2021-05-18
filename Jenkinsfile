@@ -31,7 +31,12 @@ pipeline {
                 sh 'java Param ${NOMBRE}'
             }
         }
-        stage('Machine') {
+        stage('Compile Maquina') {
+            steps {
+                sh 'javac Maquina.java'
+            }
+        }
+        stage('Execute Maquina') {
             steps {
                 sh 'java Maquina ${MAQUINA}'
             }

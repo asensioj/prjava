@@ -3,6 +3,11 @@ pipeline {
     
     environment {
         NOMBRE = 'Eustaquio'
+	MAQUINA = """${sh(
+			returnStdout: true,
+			script: 'uname -n'
+			)
+		}"""
     }
 
     stages {
@@ -24,6 +29,11 @@ pipeline {
         stage('Execute Param') {
             steps {
                 sh 'java Param ${NOMBRE}'
+            }
+        }
+        stage('Machine') {
+            steps {
+                sh 'java Maquina ${MAQUINA}'
             }
         }
     }
